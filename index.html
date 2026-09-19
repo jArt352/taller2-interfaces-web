@@ -841,5 +841,25 @@
     <p>Desarrollo con IA — HTML5, CSS Moderno, Responsive, UX/UI, Accesibilidad</p>
   </footer>
 
+  <script>
+    document.querySelectorAll('pre').forEach(function(pre) {
+      var btn = document.createElement('button');
+      btn.className = 'copy-btn';
+      btn.textContent = 'Copiar';
+      btn.addEventListener('click', function() {
+        var code = pre.textContent.replace(/^(HTML|CSS|Proyecto|index\.html.*|styles\.css.*)\n/, '');
+        navigator.clipboard.writeText(code).then(function() {
+          btn.textContent = 'Copiado';
+          btn.classList.add('copied');
+          setTimeout(function() {
+            btn.textContent = 'Copiar';
+            btn.classList.remove('copied');
+          }, 2000);
+        });
+      });
+      pre.appendChild(btn);
+    });
+  </script>
+
 </body>
 </html>
