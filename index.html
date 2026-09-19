@@ -322,7 +322,7 @@
       <div class="section-header">
         <span class="section-number">02 — CSS Moderno</span>
         <h2>Dándole estilo — paso a paso</h2>
-        <p>Ya tienen la estructura HTML. Ahora vamos a hacer que se vea bien. Creen un archivo <code>styles.css</code> en la misma carpeta que su index.html y sigan estos pasos.</p>
+        <p>Ya tienen la estructura HTML de los pasos anteriores: el <code>&lt;header&gt;</code> con <code>&lt;nav&gt;</code>, las secciones, el formulario y el footer. Ahora vamos a estilizar ESE HTML. Creen un archivo <code>styles.css</code> en la misma carpeta y sigan estos pasos.</p>
       </div>
 
       <!-- CSS PASO 1 -->
@@ -397,25 +397,37 @@
       <!-- CSS PASO 4 -->
       <div class="step-block">
         <div class="step-badge">Paso 4</div>
-        <h3>Flexbox — alinear cosas en una fila</h3>
-        <p>Flexbox sirve para distribuir elementos en UNA dirección: fila o columna. Lo van a usar para el navbar, para centrar cosas, para separar elementos.</p>
-        <p>Ejemplo: quieren el logo a la izquierda y el menú a la derecha:</p>
+        <h3>Flexbox — estilizar el header y nav que creamos</h3>
+        <p>En el Paso 5 de HTML creamos un <code>&lt;header&gt;</code> con un <code>&lt;nav&gt;</code> que tiene 3 enlaces (Inicio, Servicios, Contacto). Ahora vamos a hacer que los enlaces se distribuyan en fila con Flexbox:</p>
 
 <pre><span class="label">styles.css</span>
+<span class="cmt">/* El header: fondo oscuro, padding interno */</span>
 <span class="sel">header</span> {
+  <span class="prop">background</span>: <span class="fn">var</span>(<span class="prop">--color-dark</span>);
+  <span class="prop">padding</span>: <span class="fn">var</span>(<span class="prop">--spacing-md</span>) <span class="fn">var</span>(<span class="prop">--spacing-lg</span>);
+}
+
+<span class="cmt">/* El nav: flexbox para poner los links en fila */</span>
+<span class="sel">nav</span> {
   <span class="prop">display</span>: <span class="val">flex</span>;              <span class="cmt">/* activa flexbox */</span>
-  <span class="prop">justify-content</span>: <span class="val">space-between</span>; <span class="cmt">/* separa los hijos */</span>
+  <span class="prop">justify-content</span>: <span class="val">space-between</span>; <span class="cmt">/* separa los enlaces */</span>
   <span class="prop">align-items</span>: <span class="val">center</span>;        <span class="cmt">/* centra vertical */</span>
-  <span class="prop">padding</span>: <span class="fn">var</span>(<span class="prop">--spacing-md</span>);
+  <span class="prop">gap</span>: <span class="fn">var</span>(<span class="prop">--spacing-lg</span>);       <span class="cmt">/* espacio entre cada link */</span>
+}
+
+<span class="cmt">/* Los enlaces dentro del nav */</span>
+<span class="sel">nav a</span> {
+  <span class="prop">color</span>: <span class="val">white</span>;
+  <span class="prop">text-decoration</span>: <span class="val">none</span>;
 }</pre>
 
-        <p><strong>Resultado:</strong></p>
+        <p><strong>Resultado:</strong> los 3 enlaces del nav quedan distribuidos en fila, separados, centrados:</p>
         <div class="demo-container">
-          <span class="demo-label">justify-content: space-between</span>
+          <span class="demo-label">Así queda el nav con Flexbox</span>
           <div class="flex-demo flex-demo--row">
-            <div class="item">Logo</div>
-            <div class="item">Menu</div>
-            <div class="item">Login</div>
+            <div class="item">Inicio</div>
+            <div class="item">Servicios</div>
+            <div class="item">Contacto</div>
           </div>
         </div>
 
@@ -434,33 +446,44 @@
       <!-- CSS PASO 5 -->
       <div class="step-block">
         <div class="step-badge">Paso 5</div>
-        <h3>CSS Grid — layouts de dos dimensiones</h3>
-        <p>Grid trabaja en DOS ejes (filas Y columnas). Lo van a usar para el layout general de la página y para grillas de tarjetas.</p>
-        <p>Ejemplo: una sección de servicios con 3 columnas:</p>
+        <h3>CSS Grid — poner los servicios en columnas</h3>
+        <p>En el Paso 5 de HTML creamos una <code>&lt;section id="servicios"&gt;</code> con varios <code>&lt;article&gt;</code> adentro. Ahorita se ven uno debajo del otro. Con Grid los ponemos en columnas:</p>
 
 <pre><span class="label">styles.css</span>
-<span class="sel">.servicios</span> {
+<span class="cmt">/* Cada section tiene padding y un ancho máximo */</span>
+<span class="sel">section</span> {
+  <span class="prop">padding</span>: <span class="fn">var</span>(<span class="prop">--spacing-xl</span>);
+  <span class="prop">max-width</span>: <span class="num">1100px</span>;
+  <span class="prop">margin</span>: <span class="num">0</span> <span class="val">auto</span>;
+}
+
+<span class="cmt">/* Los articles dentro de #servicios: 3 columnas */</span>
+<span class="sel">#servicios</span> {
   <span class="prop">display</span>: <span class="val">grid</span>;
   <span class="prop">grid-template-columns</span>: <span class="fn">repeat</span>(<span class="num">3</span>, <span class="num">1fr</span>); <span class="cmt">/* 3 columnas iguales */</span>
   <span class="prop">gap</span>: <span class="fn">var</span>(<span class="prop">--spacing-lg</span>);
+}
+
+<span class="cmt">/* Cada article es una tarjeta */</span>
+<span class="sel">#servicios article</span> {
+  <span class="prop">background</span>: <span class="fn">var</span>(<span class="prop">--color-light</span>);
+  <span class="prop">padding</span>: <span class="fn">var</span>(<span class="prop">--spacing-lg</span>);
+  <span class="prop">border-radius</span>: <span class="num">8px</span>;
 }</pre>
 
-        <p>También pueden nombrar las áreas del layout:</p>
-
-<pre><span class="label">styles.css</span>
-<span class="sel">.pagina</span> {
-  <span class="prop">display</span>: <span class="val">grid</span>;
-  <span class="prop">grid-template-columns</span>: <span class="num">200px</span> <span class="num">1fr</span> <span class="num">200px</span>;
-  <span class="prop">grid-template-areas</span>:
-    <span class="str">"header  header  header"</span>
-    <span class="str">"sidebar main    aside"</span>
-    <span class="str">"footer  footer  footer"</span>;
-  <span class="prop">gap</span>: <span class="num">1rem</span>;
-}</pre>
-
-        <p><strong>Resultado:</strong></p>
+        <p><strong>Resultado:</strong> los articles se acomodan en 3 columnas iguales:</p>
         <div class="demo-container">
-          <span class="demo-label">grid-template-areas</span>
+          <span class="demo-label">Los articles de #servicios en Grid</span>
+          <div class="grid-demo grid-demo--areas">
+            <div class="item item-header">Diseño web</div>
+            <div class="item item-sidebar">Desarrollo</div>
+            <div class="item item-main">Marketing</div>
+          </div>
+        </div>
+
+        <p>Grid también permite nombrar áreas para layouts más complejos (header arriba, sidebar a un lado, etc.):</p>
+        <div class="demo-container">
+          <span class="demo-label">grid-template-areas (layout avanzado)</span>
           <div class="grid-demo grid-demo--areas">
             <div class="item item-header">Header</div>
             <div class="item item-sidebar">Sidebar</div>
@@ -473,7 +496,7 @@
         <div class="callout callout--tip">
           <span class="callout-icon">*</span>
           <div>
-            <p><strong>Regla simple:</strong> Flexbox para componentes chicos (navbar, una fila de botones, una card). Grid para el layout general de la página o grillas de contenido.</p>
+            <p><strong>Regla simple:</strong> Flexbox para componentes chicos (el nav, una fila de botones). Grid para distribuir contenido en columnas (los servicios, galería de fotos, layout de página).</p>
           </div>
         </div>
       </div>
@@ -481,22 +504,42 @@
       <!-- CSS PASO 6 -->
       <div class="step-block">
         <div class="step-badge">Paso 6</div>
-        <h3>Hover y transiciones — que las cosas respondan</h3>
-        <p>Cuando el usuario pasa el mouse por un botón, tiene que pasar algo. Sin esto, el botón se siente muerto:</p>
+        <h3>Hover y transiciones — estilizar el botón Enviar</h3>
+        <p>En el Paso 6 de HTML creamos un formulario con <code>&lt;button type="submit"&gt;Enviar&lt;/button&gt;</code>. Vamos a darle estilo y hacer que reaccione al mouse:</p>
 
 <pre><span class="label">styles.css</span>
-<span class="sel">.boton</span> {
+<span class="cmt">/* El botón Enviar del formulario */</span>
+<span class="sel">button</span> {
   <span class="prop">background</span>: <span class="fn">var</span>(<span class="prop">--color-primary</span>);
   <span class="prop">color</span>: <span class="val">white</span>;
   <span class="prop">padding</span>: <span class="fn">var</span>(<span class="prop">--spacing-sm</span>) <span class="fn">var</span>(<span class="prop">--spacing-lg</span>);
   <span class="prop">border</span>: <span class="val">none</span>;
   <span class="prop">border-radius</span>: <span class="num">6px</span>;
   <span class="prop">cursor</span>: <span class="val">pointer</span>;
+  <span class="prop">font-size</span>: <span class="num">1rem</span>;
   <span class="prop">transition</span>: <span class="val">background</span> <span class="num">0.2s</span>;  <span class="cmt">/* suaviza el cambio */</span>
 }
 
-<span class="sel">.boton:hover</span> {
-  <span class="prop">background</span>: <span class="str">#026670</span>;  <span class="cmt">/* un tono más oscuro */</span>
+<span class="cmt">/* Cuando pasan el mouse por encima */</span>
+<span class="sel">button:hover</span> {
+  <span class="prop">background</span>: <span class="str">#026670</span>;  <span class="cmt">/* tono más oscuro */</span>
+}
+
+<span class="cmt">/* Los inputs y textarea del formulario */</span>
+<span class="sel">input</span>, <span class="sel">textarea</span> {
+  <span class="prop">width</span>: <span class="num">100%</span>;
+  <span class="prop">padding</span>: <span class="fn">var</span>(<span class="prop">--spacing-sm</span>);
+  <span class="prop">border</span>: <span class="num">1px</span> <span class="val">solid</span> <span class="str">#ccc</span>;
+  <span class="prop">border-radius</span>: <span class="num">4px</span>;
+  <span class="prop">font-size</span>: <span class="num">1rem</span>;
+}
+
+<span class="cmt">/* Los labels del formulario */</span>
+<span class="sel">label</span> {
+  <span class="prop">display</span>: <span class="val">block</span>;
+  <span class="prop">margin-top</span>: <span class="fn">var</span>(<span class="prop">--spacing-md</span>);
+  <span class="prop">margin-bottom</span>: <span class="fn">var</span>(<span class="prop">--spacing-xs</span>);
+  <span class="prop">font-weight</span>: <span class="num">600</span>;
 }</pre>
 
         <p><strong>Pruébenlo:</strong> pasen el mouse por estos botones:</p>
@@ -847,7 +890,9 @@
       btn.className = 'copy-btn';
       btn.textContent = 'Copiar';
       btn.addEventListener('click', function() {
-        var code = pre.textContent.replace(/^(HTML|CSS|Proyecto|index\.html.*|styles\.css.*)\n/, '');
+        var clone = pre.cloneNode(true);
+        clone.querySelectorAll('.copy-btn, .label').forEach(function(el) { el.remove(); });
+        var code = clone.textContent.trim();
         navigator.clipboard.writeText(code).then(function() {
           btn.textContent = 'Copiado';
           btn.classList.add('copied');
