@@ -1,0 +1,9 @@
+node_modules/
+.claude/
+memory/
+*.pptx
+create_deck.js
+convert_pdf.py
+guia-clase.html
+package.json
+package-lock.json

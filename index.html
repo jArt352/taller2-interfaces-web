@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Taller 2 — Construcción de interfaces web modernas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="#" class="site-logo">&lt;/&gt; <span>Taller 2</span></a>
+      <button class="nav-toggle" aria-label="Abrir menú" onclick="document.querySelector('.site-nav').classList.toggle('is-open')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+      </button>
+      <nav class="site-nav" aria-label="Navegación principal">
+        <ul>
+          <li><a href="#html5">HTML5</a></li>
+          <li><a href="#css">CSS</a></li>
+          <li><a href="#responsive">Responsive</a></li>
+          <li><a href="#uxui">UX/UI</a></li>
+          <li><a href="#accesibilidad">Accesibilidad</a></li>
+          <li><a href="#ia">IA</a></li>
+          <li><a href="#taller">Taller</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <span class="badge">Taller 2 — Desarrollo con IA</span>
+      <h1>Construcción de interfaces web modernas</h1>
+      <p>Antes de tocar React o cualquier framework, necesitamos entender qué es lo que realmente genera el navegador. En este taller vamos a construir una página web desde cero usando solo HTML y CSS.</p>
+      <a href="#qr" class="hero-cta">Clonar el repositorio</a>
+    </div>
+  </section>
+
+  <!-- QR PARA CLONAR -->
+  <section class="qr-section" id="qr">
+    <div class="qr-inner">
+      <h2>Clonen este repositorio</h2>
+      <p>Escaneen el QR o copien la URL. Abran la terminal y ejecuten <code>git clone</code> con la dirección del repo.</p>
+      <div class="qr-code">
+        <img src="qr.svg" alt="Código QR del repositorio del taller">
+      </div>
+      <div class="repo-url">
+        <a href="https://github.com/jArt352/taller2-interfaces-web" target="_blank" rel="noopener">github.com/jArt352/taller2-interfaces-web</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 1. HTML5 — PASO A PASO ==================== -->
+  <section class="section" id="html5">
+    <div class="section-inner">
+      <div class="section-header">
+        <span class="section-number">01 — HTML5</span>
+        <h2>Estructura de una web — paso a paso</h2>
+        <p>Piensen en HTML como el esqueleto de una página. Sin HTML no existe nada en el navegador. Vamos a construir un documento HTML desde cero, línea por línea.</p>
+      </div>
+
+      <!-- PASO 1 -->
+      <div class="step-block">
+        <div class="step-badge">Paso 1</div>
+        <h3>Crear el archivo y declarar HTML5</h3>
+        <p>Abran su editor de código (VS Code). Creen un archivo llamado <code>index.html</code>. Lo primero que van a escribir es esto:</p>
+
+<pre><span class="label">index.html</span>
+<span class="tag">&lt;!DOCTYPE html&gt;</span></pre>
+
+        <p>Esta línea le dice al navegador: "este archivo es HTML5". Sin ella, el navegador entra en un modo antiguo y las cosas se ven raro. Es una sola línea, siempre va primero, y nunca cambia.</p>
+      </div>
+
+      <!-- PASO 2 -->
+      <div class="step-block">
+        <div class="step-badge">Paso 2</div>
+        <h3>Abrir la etiqueta html con idioma</h3>
+        <p>Debajo del DOCTYPE, abran la etiqueta <code>&lt;html&gt;</code> y díganle que el idioma es español:</p>
+
+<pre><span class="label">index.html</span>
+<span class="tag">&lt;!DOCTYPE html&gt;</span>
+<span class="tag">&lt;html</span> <span class="attr">lang</span>=<span class="str">"es"</span><span class="tag">&gt;</span>
+
+<span class="tag">&lt;/html&gt;</span></pre>
+
+        <p>El <code>lang="es"</code> ayuda a los lectores de pantalla a pronunciar bien el texto y a Google a saber en qué idioma está su página. Todo lo demás va a ir DENTRO de estas dos etiquetas.</p>
+      </div>
+
+      <!-- PASO 3 -->
+      <div class="step-block">
+        <div class="step-badge">Paso 3</div>
+        <h3>Agregar el head — la información invisible</h3>
+        <p>Dentro de <code>&lt;html&gt;</code>, lo primero es el <code>&lt;head&gt;</code>. Aquí van datos que el usuario NO ve, pero el navegador necesita:</p>
+
+<pre><span class="label">index.html</span>
+<span class="tag">&lt;!DOCTYPE html&gt;</span>
+<span class="tag">&lt;html</span> <span class="attr">lang</span>=<span class="str">"es"</span><span class="tag">&gt;</span>
+
+<span class="tag">&lt;head&gt;</span>
+  <span class="tag">&lt;meta</span> <span class="attr">charset</span>=<span class="str">"UTF-8"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;meta</span> <span class="attr">name</span>=<span class="str">"viewport"</span> <span class="attr">content</span>=<span class="str">"width=device-width, initial-scale=1.0"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;title&gt;</span>Mi Sitio Web<span class="tag">&lt;/title&gt;</span>
+  <span class="tag">&lt;link</span> <span class="attr">rel</span>=<span class="str">"stylesheet"</span> <span class="attr">href</span>=<span class="str">"styles.css"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;/head&gt;</span>
+
+<span class="tag">&lt;/html&gt;</span></pre>
+
+        <div class="callout callout--tip">
+          <span class="callout-icon">*</span>
+          <div>
+            <p><strong>¿Qué hace cada línea?</strong></p>
+            <p><code>charset="UTF-8"</code> — para que se vean bien las ñ, tildes y caracteres especiales.</p>
+            <p><code>viewport</code> — hace que la página se vea bien en celulares (sin esto se ve chiquita).</p>
+            <p><code>title</code> — el texto que aparece en la pestaña del navegador.</p>
+            <p><code>link</code> — conecta nuestro archivo CSS (los estilos).</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- PASO 4 -->
+      <div class="step-block">
+        <div class="step-badge">Paso 4</div>
+        <h3>Agregar el body — lo que el usuario VE</h3>
+        <p>Después del <code>&lt;/head&gt;</code>, abran el <code>&lt;body&gt;</code>. Todo lo que el usuario ve en la página va aquí adentro:</p>
+
+<pre><span class="label">index.html</span>
+<span class="tag">&lt;!DOCTYPE html&gt;</span>
+<span class="tag">&lt;html</span> <span class="attr">lang</span>=<span class="str">"es"</span><span class="tag">&gt;</span>
+
+<span class="tag">&lt;head&gt;</span>
+  <span class="tag">&lt;meta</span> <span class="attr">charset</span>=<span class="str">"UTF-8"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;meta</span> <span class="attr">name</span>=<span class="str">"viewport"</span> <span class="attr">content</span>=<span class="str">"width=device-width, initial-scale=1.0"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;title&gt;</span>Mi Sitio Web<span class="tag">&lt;/title&gt;</span>
+  <span class="tag">&lt;link</span> <span class="attr">rel</span>=<span class="str">"stylesheet"</span> <span class="attr">href</span>=<span class="str">"styles.css"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;/head&gt;</span>
+
+<span class="tag">&lt;body&gt;</span>
+  <span class="cmt">&lt;!-- Aquí va todo lo visible --&gt;</span>
+<span class="tag">&lt;/body&gt;</span>
+
+<span class="tag">&lt;/html&gt;</span></pre>
+
+        <div class="callout callout--warning">
+          <span class="callout-icon">!</span>
+          <div>
+            <p><strong>Regla importante:</strong> Nada visible va en el <code>&lt;head&gt;</code>. Nada de metadatos va en el <code>&lt;body&gt;</code>. Si ponen un <code>&lt;p&gt;</code> en el head, no se va a ver.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- PASO 5 -->
+      <div class="step-block">
+        <div class="step-badge">Paso 5</div>
+        <h3>Llenar el body con etiquetas semánticas</h3>
+        <p>Ahora viene la parte importante. Dentro del <code>&lt;body&gt;</code> NO metan todo en <code>&lt;div&gt;</code>. Usen etiquetas que le dicen al navegador QUÉ es cada cosa:</p>
+
+<pre><span class="label">index.html — dentro del body</span>
+<span class="tag">&lt;body&gt;</span>
+
+  <span class="tag">&lt;header&gt;</span>
+    <span class="tag">&lt;nav&gt;</span>
+      <span class="tag">&lt;a</span> <span class="attr">href</span>=<span class="str">"#inicio"</span><span class="tag">&gt;</span>Inicio<span class="tag">&lt;/a&gt;</span>
+      <span class="tag">&lt;a</span> <span class="attr">href</span>=<span class="str">"#servicios"</span><span class="tag">&gt;</span>Servicios<span class="tag">&lt;/a&gt;</span>
+      <span class="tag">&lt;a</span> <span class="attr">href</span>=<span class="str">"#contacto"</span><span class="tag">&gt;</span>Contacto<span class="tag">&lt;/a&gt;</span>
+    <span class="tag">&lt;/nav&gt;</span>
+  <span class="tag">&lt;/header&gt;</span>
+
+  <span class="tag">&lt;main&gt;</span>
+    <span class="tag">&lt;section</span> <span class="attr">id</span>=<span class="str">"inicio"</span><span class="tag">&gt;</span>
+      <span class="tag">&lt;h1&gt;</span>Bienvenidos a mi sitio<span class="tag">&lt;/h1&gt;</span>
+      <span class="tag">&lt;p&gt;</span>Este es el contenido principal.<span class="tag">&lt;/p&gt;</span>
+    <span class="tag">&lt;/section&gt;</span>
+
+    <span class="tag">&lt;section</span> <span class="attr">id</span>=<span class="str">"servicios"</span><span class="tag">&gt;</span>
+      <span class="tag">&lt;h2&gt;</span>Nuestros servicios<span class="tag">&lt;/h2&gt;</span>
+      <span class="tag">&lt;article&gt;</span>
+        <span class="tag">&lt;h3&gt;</span>Diseño web<span class="tag">&lt;/h3&gt;</span>
+        <span class="tag">&lt;p&gt;</span>Creamos sitios modernos.<span class="tag">&lt;/p&gt;</span>
+      <span class="tag">&lt;/article&gt;</span>
+    <span class="tag">&lt;/section&gt;</span>
+  <span class="tag">&lt;/main&gt;</span>
+
+  <span class="tag">&lt;footer&gt;</span>
+    <span class="tag">&lt;p&gt;</span>&amp;copy; 2025 Mi Empresa<span class="tag">&lt;/p&gt;</span>
+  <span class="tag">&lt;/footer&gt;</span>
+
+<span class="tag">&lt;/body&gt;</span></pre>
+
+        <p>Eso es todo. Abran este archivo en el navegador y van a ver el contenido. Sin CSS se ve feo, pero la ESTRUCTURA ya está.</p>
+      </div>
+
+      <!-- RESUMEN ETIQUETAS -->
+      <h3>¿Qué etiqueta uso para qué?</h3>
+      <div class="cards-grid cards-grid--3">
+        <div class="card">
+          <div class="card-icon">&lt;h&gt;</div>
+          <h4><code>&lt;header&gt;</code></h4>
+          <p>El encabezado. Logo + menú de navegación. Va arriba de todo.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">nav</div>
+          <h4><code>&lt;nav&gt;</code></h4>
+          <p>Los enlaces de navegación. Va DENTRO del header.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">&lt;m&gt;</div>
+          <h4><code>&lt;main&gt;</code></h4>
+          <p>El contenido principal. Solo UNO por página.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">sec</div>
+          <h4><code>&lt;section&gt;</code></h4>
+          <p>Un bloque temático: "Servicios", "Nosotros", "Contacto".</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">art</div>
+          <h4><code>&lt;article&gt;</code></h4>
+          <p>Contenido independiente: un post, una noticia, un producto.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">&lt;f&gt;</div>
+          <h4><code>&lt;footer&gt;</code></h4>
+          <p>El pie de página. Copyright, links, redes sociales.</p>
+        </div>
+      </div>
+
+      <div class="callout callout--warning">
+        <span class="callout-icon">!</span>
+        <div>
+          <p><strong>Error comun:</strong> Escribir <code>&lt;div class="header"&gt;</code> en vez de <code>&lt;header&gt;</code>. Se ve igual, pero el navegador y los lectores de pantalla no saben qué es.</p>
+        </div>
+      </div>
+
+      <!-- PASO 6 -->
+      <div class="step-block">
+        <div class="step-badge">Paso 6</div>
+        <h3>Agregar un formulario</h3>
+        <p>Los formularios son la forma de recibir datos del usuario. Cada campo necesita un <code>&lt;label&gt;</code>. Sin label, una persona ciega no sabe qué escribir ahí.</p>
+
+<pre><span class="label">HTML — agregar dentro de una section</span>
+<span class="tag">&lt;section</span> <span class="attr">id</span>=<span class="str">"contacto"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;h2&gt;</span>Contacto<span class="tag">&lt;/h2&gt;</span>
+
+  <span class="tag">&lt;form&gt;</span>
+    <span class="tag">&lt;label</span> <span class="attr">for</span>=<span class="str">"nombre"</span><span class="tag">&gt;</span>Nombre:<span class="tag">&lt;/label&gt;</span>
+    <span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="str">"text"</span> <span class="attr">id</span>=<span class="str">"nombre"</span> <span class="attr">required</span><span class="tag">&gt;</span>
+
+    <span class="tag">&lt;label</span> <span class="attr">for</span>=<span class="str">"email"</span><span class="tag">&gt;</span>Email:<span class="tag">&lt;/label&gt;</span>
+    <span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="str">"email"</span> <span class="attr">id</span>=<span class="str">"email"</span> <span class="attr">required</span><span class="tag">&gt;</span>
+
+    <span class="tag">&lt;label</span> <span class="attr">for</span>=<span class="str">"mensaje"</span><span class="tag">&gt;</span>Mensaje:<span class="tag">&lt;/label&gt;</span>
+    <span class="tag">&lt;textarea</span> <span class="attr">id</span>=<span class="str">"mensaje"</span> <span class="attr">rows</span>=<span class="str">"4"</span><span class="tag">&gt;&lt;/textarea&gt;</span>
+
+    <span class="tag">&lt;button</span> <span class="attr">type</span>=<span class="str">"submit"</span><span class="tag">&gt;</span>Enviar<span class="tag">&lt;/button&gt;</span>
+  <span class="tag">&lt;/form&gt;</span>
+<span class="tag">&lt;/section&gt;</span></pre>
+
+        <div class="callout callout--tip">
+          <span class="callout-icon">*</span>
+          <div>
+            <p><strong>¿Cómo funciona?</strong> El <code>for="nombre"</code> del label se conecta con el <code>id="nombre"</code> del input. Hacen clic en el texto "Nombre:" y el cursor va al campo. Pruébenlo abajo:</p>
+          </div>
+        </div>
+
+        <div class="form-demo">
+          <div class="form-group">
+            <label for="demo-name">Nombre completo</label>
+            <input type="text" id="demo-name" placeholder="Ej: María García">
+            <span class="hint">Hagan clic en el texto "Nombre completo" — el cursor va al input gracias al label.</span>
+          </div>
+          <div class="form-group">
+            <label for="demo-email">Correo electrónico</label>
+            <input type="email" id="demo-email" placeholder="maria@ejemplo.com">
+          </div>
+          <div class="form-group">
+            <label for="demo-role">Rol</label>
+            <select id="demo-role">
+              <option value="">Seleccionar...</option>
+              <option>Estudiante</option>
+              <option>Desarrollador</option>
+              <option>Diseñador</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- PASO 7 -->
+      <div class="step-block">
+        <div class="step-badge">Paso 7</div>
+        <h3>Imágenes y enlaces</h3>
+        <div class="cards-grid cards-grid--2">
+          <div class="card">
+            <h4>Imágenes</h4>
+            <ul>
+              <li><code>&lt;img src="foto.jpg" alt="Descripción"&gt;</code></li>
+              <li><code>alt=""</code> vacío si es solo decoración</li>
+              <li><code>loading="lazy"</code> para carga diferida</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h4>Enlaces</h4>
+            <ul>
+              <li><code>&lt;a href="url"&gt;Texto&lt;/a&gt;</code> — enlace básico</li>
+              <li><code>target="_blank"</code> abre en pestaña nueva</li>
+              <li><code>href="#seccion"</code> para navegación interna</li>
+            </ul>
+          </div>
+        </div>
+        <p>Con esto ya tienen TODO el HTML que necesitan para una landing page. Ahora vamos a darle estilo con CSS.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 2. CSS MODERNO — PASO A PASO ==================== -->
+  <section class="section" id="css">
+    <div class="section-inner">
+      <div class="section-header">
+        <span class="section-number">02 — CSS Moderno</span>
+        <h2>Dándole estilo — paso a paso</h2>
+        <p>Ya tienen la estructura HTML. Ahora vamos a hacer que se vea bien. Creen un archivo <code>styles.css</code> en la misma carpeta que su index.html y sigan estos pasos.</p>
+      </div>
+
+      <!-- CSS PASO 1 -->
+      <div class="step-block">
+        <div class="step-badge">Paso 1</div>
+        <h3>El reset — siempre empiecen con esto</h3>
+        <p>Lo primero que van a escribir en su CSS es un reset. Esto elimina los márgenes y paddings que el navegador pone por defecto y arregla cómo se calculan los tamaños:</p>
+
+<pre><span class="label">styles.css</span>
+<span class="sel">*</span>, <span class="sel">*::before</span>, <span class="sel">*::after</span> {
+  <span class="prop">box-sizing</span>: <span class="val">border-box</span>;
+  <span class="prop">margin</span>: <span class="num">0</span>;
+  <span class="prop">padding</span>: <span class="num">0</span>;
+}</pre>
+
+        <p><strong>¿Qué es box-sizing: border-box?</strong> Sin esto, si dicen "esta caja es de 300px" y le agregan 20px de padding, termina midiendo 340px. Con <code>border-box</code>, 300px es 300px incluyendo todo. Siempre úsenlo.</p>
+
+        <h4>Entiendan el Box Model</h4>
+        <p>Todo elemento HTML es una caja con 4 capas. De adentro hacia afuera:</p>
+        <div class="box-model-demo">
+          <div class="box-margin">
+            <div class="box-border">
+              <div class="box-padding">
+                <div class="box-content">content</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p><strong>content</strong> = el texto o imagen. <strong>padding</strong> = espacio interno (entre contenido y borde). <strong>border</strong> = el borde visible. <strong>margin</strong> = espacio externo (entre esta caja y las demás).</p>
+      </div>
+
+      <!-- CSS PASO 2 -->
+      <div class="step-block">
+        <div class="step-badge">Paso 2</div>
+        <h3>Definir variables — colores, fuentes y espaciados</h3>
+        <p>Antes de escribir cualquier estilo, definan sus colores y fuentes en un solo lugar. Así, si quieren cambiar algo, lo cambian UNA vez:</p>
+
+<pre><span class="label">styles.css — agregar debajo del reset</span>
+<span class="sel">:root</span> {
+  <span class="prop">--color-primary</span>: <span class="str">#028090</span>;
+  <span class="prop">--color-dark</span>: <span class="str">#1a202c</span>;
+  <span class="prop">--color-light</span>: <span class="str">#f7f7f7</span>;
+  <span class="prop">--color-white</span>: <span class="str">#ffffff</span>;
+  <span class="prop">--font-body</span>: <span class="str">'Inter'</span>, <span class="val">sans-serif</span>;
+  <span class="prop">--spacing-sm</span>: <span class="num">0.5rem</span>;
+  <span class="prop">--spacing-md</span>: <span class="num">1rem</span>;
+  <span class="prop">--spacing-lg</span>: <span class="num">2rem</span>;
+  <span class="prop">--spacing-xl</span>: <span class="num">4rem</span>;
+}</pre>
+
+        <p>Después usan estas variables con <code>var(--nombre)</code>. Ejemplo: <code>color: var(--color-primary)</code>.</p>
+        <p>Si el cliente dice "cambiá el azul por verde", cambian UNA línea en <code>:root</code> y todo se actualiza.</p>
+      </div>
+
+      <!-- CSS PASO 3 -->
+      <div class="step-block">
+        <div class="step-badge">Paso 3</div>
+        <h3>Estilos base del body</h3>
+        <p>Ahora denle estilos generales al body — la fuente, el color del texto, y el alto de línea:</p>
+
+<pre><span class="label">styles.css</span>
+<span class="sel">body</span> {
+  <span class="prop">font-family</span>: <span class="fn">var</span>(<span class="prop">--font-body</span>);
+  <span class="prop">color</span>: <span class="fn">var</span>(<span class="prop">--color-dark</span>);
+  <span class="prop">line-height</span>: <span class="num">1.6</span>;
+  <span class="prop">background</span>: <span class="fn">var</span>(<span class="prop">--color-white</span>);
+}</pre>
+
+        <p><code>line-height: 1.6</code> hace que el texto tenga espacio entre líneas y sea más fácil de leer. Si lo dejan en 1, las líneas se pegan.</p>
+      </div>
+
+      <!-- CSS PASO 4 -->
+      <div class="step-block">
+        <div class="step-badge">Paso 4</div>
+        <h3>Flexbox — alinear cosas en una fila</h3>
+        <p>Flexbox sirve para distribuir elementos en UNA dirección: fila o columna. Lo van a usar para el navbar, para centrar cosas, para separar elementos.</p>
+        <p>Ejemplo: quieren el logo a la izquierda y el menú a la derecha:</p>
+
+<pre><span class="label">styles.css</span>
+<span class="sel">header</span> {
+  <span class="prop">display</span>: <span class="val">flex</span>;              <span class="cmt">/* activa flexbox */</span>
+  <span class="prop">justify-content</span>: <span class="val">space-between</span>; <span class="cmt">/* separa los hijos */</span>
+  <span class="prop">align-items</span>: <span class="val">center</span>;        <span class="cmt">/* centra vertical */</span>
+  <span class="prop">padding</span>: <span class="fn">var</span>(<span class="prop">--spacing-md</span>);
+}</pre>
+
+        <p><strong>Resultado:</strong></p>
+        <div class="demo-container">
+          <span class="demo-label">justify-content: space-between</span>
+          <div class="flex-demo flex-demo--row">
+            <div class="item">Logo</div>
+            <div class="item">Menu</div>
+            <div class="item">Login</div>
+          </div>
+        </div>
+
+        <div class="callout callout--tip">
+          <span class="callout-icon">*</span>
+          <div>
+            <p><strong>¿Qué hace cada propiedad?</strong></p>
+            <p><code>display: flex</code> — activa flexbox en ese contenedor.</p>
+            <p><code>justify-content</code> — distribuye los hijos en el eje horizontal (space-between, center, flex-end...).</p>
+            <p><code>align-items</code> — alinea los hijos en el eje vertical (center, flex-start, flex-end...).</p>
+            <p><code>gap</code> — espacio entre cada hijo (mejor que usar margin).</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- CSS PASO 5 -->
+      <div class="step-block">
+        <div class="step-badge">Paso 5</div>
+        <h3>CSS Grid — layouts de dos dimensiones</h3>
+        <p>Grid trabaja en DOS ejes (filas Y columnas). Lo van a usar para el layout general de la página y para grillas de tarjetas.</p>
+        <p>Ejemplo: una sección de servicios con 3 columnas:</p>
+
+<pre><span class="label">styles.css</span>
+<span class="sel">.servicios</span> {
+  <span class="prop">display</span>: <span class="val">grid</span>;
+  <span class="prop">grid-template-columns</span>: <span class="fn">repeat</span>(<span class="num">3</span>, <span class="num">1fr</span>); <span class="cmt">/* 3 columnas iguales */</span>
+  <span class="prop">gap</span>: <span class="fn">var</span>(<span class="prop">--spacing-lg</span>);
+}</pre>
+
+        <p>También pueden nombrar las áreas del layout:</p>
+
+<pre><span class="label">styles.css</span>
+<span class="sel">.pagina</span> {
+  <span class="prop">display</span>: <span class="val">grid</span>;
+  <span class="prop">grid-template-columns</span>: <span class="num">200px</span> <span class="num">1fr</span> <span class="num">200px</span>;
+  <span class="prop">grid-template-areas</span>:
+    <span class="str">"header  header  header"</span>
+    <span class="str">"sidebar main    aside"</span>
+    <span class="str">"footer  footer  footer"</span>;
+  <span class="prop">gap</span>: <span class="num">1rem</span>;
+}</pre>
+
+        <p><strong>Resultado:</strong></p>
+        <div class="demo-container">
+          <span class="demo-label">grid-template-areas</span>
+          <div class="grid-demo grid-demo--areas">
+            <div class="item item-header">Header</div>
+            <div class="item item-sidebar">Sidebar</div>
+            <div class="item item-main">Main Content</div>
+            <div class="item item-aside">Aside</div>
+            <div class="item item-footer">Footer</div>
+          </div>
+        </div>
+
+        <div class="callout callout--tip">
+          <span class="callout-icon">*</span>
+          <div>
+            <p><strong>Regla simple:</strong> Flexbox para componentes chicos (navbar, una fila de botones, una card). Grid para el layout general de la página o grillas de contenido.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- CSS PASO 6 -->
+      <div class="step-block">
+        <div class="step-badge">Paso 6</div>
+        <h3>Hover y transiciones — que las cosas respondan</h3>
+        <p>Cuando el usuario pasa el mouse por un botón, tiene que pasar algo. Sin esto, el botón se siente muerto:</p>
+
+<pre><span class="label">styles.css</span>
+<span class="sel">.boton</span> {
+  <span class="prop">background</span>: <span class="fn">var</span>(<span class="prop">--color-primary</span>);
+  <span class="prop">color</span>: <span class="val">white</span>;
+  <span class="prop">padding</span>: <span class="fn">var</span>(<span class="prop">--spacing-sm</span>) <span class="fn">var</span>(<span class="prop">--spacing-lg</span>);
+  <span class="prop">border</span>: <span class="val">none</span>;
+  <span class="prop">border-radius</span>: <span class="num">6px</span>;
+  <span class="prop">cursor</span>: <span class="val">pointer</span>;
+  <span class="prop">transition</span>: <span class="val">background</span> <span class="num">0.2s</span>;  <span class="cmt">/* suaviza el cambio */</span>
+}
+
+<span class="sel">.boton:hover</span> {
+  <span class="prop">background</span>: <span class="str">#026670</span>;  <span class="cmt">/* un tono más oscuro */</span>
+}</pre>
+
+        <p><strong>Pruébenlo:</strong> pasen el mouse por estos botones:</p>
+        <div class="states-demo">
+          <button class="btn-demo btn-demo--default">Normal</button>
+          <button class="btn-demo btn-demo--default" style="background: var(--color-primary-dark);">Hover</button>
+          <button class="btn-demo btn-demo--disabled" disabled>Disabled</button>
+          <button class="btn-demo btn-demo--success">Success</button>
+          <button class="btn-demo btn-demo--error">Error</button>
+          <button class="btn-demo btn-demo--outline">Outline</button>
+        </div>
+      </div>
+
+      <!-- TIPOGRAFÍA -->
+      <div class="step-block">
+        <div class="step-badge">Paso 7</div>
+        <h3>Tipografía y espaciado</h3>
+        <div class="cards-grid cards-grid--2">
+          <div class="card">
+            <h4>Tipografía</h4>
+            <ul>
+              <li>Máximo 2 fuentes: títulos y cuerpo</li>
+              <li>Usen <code>rem</code> en vez de <code>px</code> para tamaños</li>
+              <li><code>line-height: 1.5</code> mínimo para texto de párrafo</li>
+              <li>Solo 2 pesos: regular (400) y bold (700)</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h4>Espaciado</h4>
+            <ul>
+              <li>Escala consistente: 8, 16, 24, 32, 48px</li>
+              <li>Defínanla en variables y úsenla siempre</li>
+              <li>Más espacio entre secciones, menos entre elementos cercanos</li>
+              <li><code>gap</code> en Flex/Grid en vez de margin</li>
+            </ul>
+          </div>
+        </div>
+        <p>Con estos 7 pasos ya tienen un CSS completo. Ahora vamos a hacerlo responsive.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 3. RESPONSIVE ==================== -->
+  <section class="section" id="responsive">
+    <div class="section-inner">
+      <div class="section-header">
+        <span class="section-number">03 — Responsive Design</span>
+        <h2>Que se vea bien en cualquier pantalla</h2>
+        <p>Más del 60% de las visitas web son desde celulares. Si su página no funciona en móvil, están perdiendo a más de la mitad de sus usuarios.</p>
+      </div>
+
+      <div class="responsive-preview">
+        <div class="device--desktop">
+          <div class="device-frame">
+            <div class="topbar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+            <div class="screen">
+              <div class="block block--header"></div>
+              <div class="block block--text"></div>
+              <div class="columns"><div class="col"></div><div class="col"></div><div class="col"></div></div>
+            </div>
+          </div>
+          <div class="device-label">Desktop <span>&gt; 1024px</span></div>
+        </div>
+        <div class="device--tablet">
+          <div class="device-frame">
+            <div class="topbar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+            <div class="screen">
+              <div class="block block--header"></div>
+              <div class="block block--text"></div>
+              <div class="columns"><div class="col"></div><div class="col"></div></div>
+            </div>
+          </div>
+          <div class="device-label">Tablet <span>768 – 1024px</span></div>
+        </div>
+        <div class="device--mobile">
+          <div class="device-frame">
+            <div class="topbar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+            <div class="screen">
+              <div class="block block--header"></div>
+              <div class="block block--text"></div>
+              <div class="block block--text-short"></div>
+            </div>
+          </div>
+          <div class="device-label">Mobile <span>&lt; 768px</span></div>
+        </div>
+      </div>
+
+      <!-- RESPONSIVE PASO 1 -->
+      <div class="step-block">
+        <div class="step-badge">Paso 1</div>
+        <h3>Mobile First — empiecen por el celular</h3>
+        <p>El CSS que escriben SIN media query es para celular. Después usan <code>@media</code> para AGREGAR estilos cuando la pantalla crece:</p>
+
+<pre><span class="label">styles.css</span>
+<span class="cmt">/* Esto es para celular (sin media query) */</span>
+<span class="sel">.servicios</span> {
+  <span class="prop">display</span>: <span class="val">grid</span>;
+  <span class="prop">grid-template-columns</span>: <span class="num">1fr</span>;  <span class="cmt">/* 1 columna */</span>
+  <span class="prop">gap</span>: <span class="num">1rem</span>;
+}
+
+<span class="cmt">/* Cuando la pantalla tenga 768px o más = tablet */</span>
+<span class="sel">@media</span> (<span class="prop">min-width</span>: <span class="num">768px</span>) {
+  <span class="sel">.servicios</span> {
+    <span class="prop">grid-template-columns</span>: <span class="fn">repeat</span>(<span class="num">2</span>, <span class="num">1fr</span>); <span class="cmt">/* 2 columnas */</span>
+  }
+}
+
+<span class="cmt">/* Cuando la pantalla tenga 1024px o más = desktop */</span>
+<span class="sel">@media</span> (<span class="prop">min-width</span>: <span class="num">1024px</span>) {
+  <span class="sel">.servicios</span> {
+    <span class="prop">grid-template-columns</span>: <span class="fn">repeat</span>(<span class="num">3</span>, <span class="num">1fr</span>); <span class="cmt">/* 3 columnas */</span>
+  }
+}</pre>
+
+        <div class="callout callout--tip">
+          <span class="callout-icon">*</span>
+          <div>
+            <p><strong>Usamos <code>min-width</code></strong>, no max-width. El CSS base es para móvil y las media queries AGREGAN cuando la pantalla crece. Es más fácil agregar complejidad que quitarla.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- RESPONSIVE PASO 2 -->
+      <div class="step-block">
+        <div class="step-badge">Paso 2</div>
+        <h3>clamp() — tipografía que se adapta sola</h3>
+        <p>En vez de cambiar el tamaño de título en cada media query, usen <code>clamp()</code>. Le dicen un mínimo, un máximo, y cómo escala:</p>
+
+<pre><span class="label">styles.css</span>
+<span class="sel">h1</span> {
+  <span class="cmt">/* mínimo 1.8rem, escala con el ancho, máximo 3rem */</span>
+  <span class="prop">font-size</span>: <span class="fn">clamp</span>(<span class="num">1.8rem</span>, <span class="num">1.4rem</span> + <span class="num">2vw</span>, <span class="num">3rem</span>);
+}</pre>
+
+        <p>Eso es todo. El título se adapta solo. En celular es 1.8rem, en desktop llega a 3rem, y en el medio escala suavemente.</p>
+      </div>
+
+      <!-- RESPONSIVE PASO 3 -->
+      <div class="step-block">
+        <div class="step-badge">Paso 3</div>
+        <h3>Grid que se adapta sin media queries</h3>
+
+<pre><span class="label">styles.css</span>
+<span class="sel">.auto-grid</span> {
+  <span class="prop">display</span>: <span class="val">grid</span>;
+  <span class="prop">grid-template-columns</span>: <span class="fn">repeat</span>(
+    <span class="val">auto-fit</span>,
+    <span class="fn">minmax</span>(<span class="fn">min</span>(<span class="num">100%</span>, <span class="num">18rem</span>), <span class="num">1fr</span>)
+  );
+  <span class="prop">gap</span>: <span class="num">1.5rem</span>;
+}</pre>
+
+        <p>Esto crea un grid donde las columnas se acomodan solas. Si caben 3, muestra 3. Si solo cabe 1, muestra 1. Sin una sola media query.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 4. UX/UI ==================== -->
+  <section class="section" id="uxui">
+    <div class="section-inner">
+      <div class="section-header">
+        <span class="section-number">04 — UX/UI</span>
+        <h2>Que se vea bien y funcione mejor</h2>
+        <p>No necesitan ser diseñadores. Con estos 6 principios sus sitios se ven profesionales. La diferencia entre amateur y profesional casi siempre es espaciado y consistencia.</p>
+      </div>
+
+      <div class="cards-grid cards-grid--3">
+        <div class="card">
+          <div class="card-icon">01</div>
+          <h4>Jerarquía visual</h4>
+          <p>Lo más importante se ve primero: más grande, más oscuro, más arriba. Si todo tiene el mismo tamaño, nada destaca.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">02</div>
+          <h4>Contraste</h4>
+          <p>Texto oscuro sobre fondo claro. Si cuesta leerlo, está mal. Ratio mínimo 4.5:1.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">03</div>
+          <h4>Espaciado</h4>
+          <p>Den aire a los elementos. El espacio blanco no es desperdicio — es lo que hace que una página se sienta limpia.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">04</div>
+          <h4>Consistencia</h4>
+          <p>Si un botón es azul y redondeado, TODOS los botones primarios deben serlo. Misma función = mismo estilo.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">05</div>
+          <h4>Feedback</h4>
+          <p>Cuando el usuario hace algo, debe pasar algo visible. Hover, loading, éxito, error. Nunca dejen al usuario preguntándose "¿funcionó?".</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">06</div>
+          <h4>Navegación clara</h4>
+          <p>El usuario nunca debe sentirse perdido. Máximo 7 ítems en el menú. Siempre debe ser obvio dónde están.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 5. ACCESIBILIDAD ==================== -->
+  <section class="section" id="accesibilidad">
+    <div class="section-inner">
+      <div class="section-header">
+        <span class="section-number">05 — Accesibilidad</span>
+        <h2>La web es para todos</h2>
+        <p>Accesibilidad no es "algo lindo de tener". Si su sitio no funciona para personas con discapacidad, están excluyendo gente. Si usan HTML semántico, ya tienen el 80% resuelto.</p>
+      </div>
+
+      <ul class="a11y-checklist">
+        <li><span class="check">+</span><div><strong>HTML Semántico</strong> — Usen <code>&lt;button&gt;</code> para botones, no <code>&lt;div onclick&gt;</code>. Un div con onclick no funciona con teclado.</div></li>
+        <li><span class="check">+</span><div><strong>Labels en formularios</strong> — Todo input necesita un label con <code>for="id"</code>. El placeholder no cuenta — desaparece al escribir.</div></li>
+        <li><span class="check">+</span><div><strong>Navegación por teclado</strong> — Traten de usar su sitio solo con Tab, Enter y Escape. ¿Pueden llegar a todo?</div></li>
+        <li><span class="check">+</span><div><strong>Contraste</strong> — Texto normal: ratio 4.5:1 mínimo. Verifiquen en webaim.org/resources/contrastchecker.</div></li>
+        <li><span class="check">+</span><div><strong>Alt en imágenes</strong> — Si la imagen comunica algo: <code>alt="descripción"</code>. Si es decoración: <code>alt=""</code> vacío.</div></li>
+      </ul>
+
+<pre><span class="label">HTML — comparación</span>
+<span class="cmt">&lt;!-- MAL --&gt;</span>
+<span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="str">"boton"</span> <span class="attr">onclick</span>=<span class="str">"cerrar()"</span><span class="tag">&gt;</span>Cerrar<span class="tag">&lt;/div&gt;</span>
+
+<span class="cmt">&lt;!-- BIEN --&gt;</span>
+<span class="tag">&lt;button</span> <span class="attr">onclick</span>=<span class="str">"cerrar()"</span><span class="tag">&gt;</span>Cerrar<span class="tag">&lt;/button&gt;</span>
+
+<span class="cmt">&lt;!-- MAL --&gt;</span>
+<span class="tag">&lt;img</span> <span class="attr">src</span>=<span class="str">"grafico.png"</span><span class="tag">&gt;</span>
+
+<span class="cmt">&lt;!-- BIEN --&gt;</span>
+<span class="tag">&lt;img</span> <span class="attr">src</span>=<span class="str">"grafico.png"</span> <span class="attr">alt</span>=<span class="str">"Ventas Q3: 45% web, 35% app"</span><span class="tag">&gt;</span></pre>
+    </div>
+  </section>
+
+  <!-- ==================== 6. USO DE IA ==================== -->
+  <section class="section" id="ia">
+    <div class="section-inner">
+      <div class="section-header">
+        <span class="section-number">06 — Uso de IA</span>
+        <h2>La IA como herramienta, no como muleta</h2>
+        <p>La IA puede generar código en segundos, pero si no entienden lo que genera, no les sirve de nada. El objetivo es usarla para ir más rápido, no para evitar aprender.</p>
+      </div>
+
+      <div class="ai-flow">
+        <div class="ai-step"><div class="step-num">1</div><h4>Dar el input</h4><p>Screenshot, wireframe o descripción clara de lo que quieren.</p></div>
+        <div class="ai-step"><div class="step-num">2</div><h4>Recibir estructura</h4><p>La IA genera HTML. Revisen que use semántica, no puro div.</p></div>
+        <div class="ai-step"><div class="step-num">3</div><h4>Revisar componentes</h4><p>¿Separó header, cards, footer? ¿Es reutilizable?</p></div>
+        <div class="ai-step"><div class="step-num">4</div><h4>Revisar CSS</h4><p>¿Usa variables? ¿Flexbox/Grid? ¿Es responsive?</p></div>
+        <div class="ai-step"><div class="step-num">5</div><h4>Entender cada línea</h4><p>Si no saben qué hace una propiedad, pregunten antes de usar.</p></div>
+        <div class="ai-step"><div class="step-num">6</div><h4>Ajustar y mejorar</h4><p>El código de IA es un borrador. Modifíquenlo, háganlo suyo.</p></div>
+      </div>
+
+      <div class="callout callout--important">
+        <span class="callout-icon">!</span>
+        <div>
+          <p><strong>Regla de la clase:</strong> Si les pregunto "¿qué hace esta línea?" y no pueden explicarlo, no deberían estar usándola. La IA ahorra tiempo de escritura, no de aprendizaje.</p>
+        </div>
+      </div>
+
+      <h3>Qué revisar en código generado por IA</h3>
+      <ol class="steps">
+        <li><div><strong>¿Es semántico?</strong> — ¿Usa header, nav, main, section? ¿O es todo div?</div></li>
+        <li><div><strong>¿Es accesible?</strong> — ¿Labels, alt, botones reales?</div></li>
+        <li><div><strong>¿Es responsive?</strong> — Achiquen el navegador. ¿Se rompe?</div></li>
+        <li><div><strong>¿Usa variables?</strong> — ¿Colores hardcodeados o custom properties?</div></li>
+        <li><div><strong>¿Lo entienden?</strong> — Lean cada propiedad CSS.</div></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ==================== 7. TALLER ==================== -->
+  <section class="section" id="taller">
+    <div class="section-inner">
+      <div class="section-header">
+        <span class="section-number">07 — Taller práctico</span>
+        <h2>Construyan su Landing Page</h2>
+        <p>Apliquen todo lo que vimos. Pueden usar la IA, pero tienen que entender cada línea. Al final voy a revisar su código y les voy a preguntar sobre lo que hicieron.</p>
+      </div>
+
+      <div class="workshop-requirements">
+        <div class="req-card">
+          <h4>Estructura HTML</h4>
+          <ul>
+            <li>DOCTYPE, html, head, body completo</li>
+            <li>Header con navegación funcional</li>
+            <li>Hero section con título y CTA</li>
+            <li>Sección de features o servicios</li>
+            <li>Formulario de contacto con labels</li>
+            <li>Footer con links</li>
+          </ul>
+        </div>
+        <div class="req-card">
+          <h4>Estilos CSS</h4>
+          <ul>
+            <li>Variables CSS para colores, fuentes, spacing</li>
+            <li>Flexbox para componentes</li>
+            <li>CSS Grid para el layout general</li>
+            <li>Hover y focus en todo lo interactivo</li>
+            <li>transition para suavizar cambios</li>
+            <li>Paleta de colores en :root</li>
+          </ul>
+        </div>
+        <div class="req-card">
+          <h4>Responsive</h4>
+          <ul>
+            <li>Mobile First (sin media query = móvil)</li>
+            <li>Breakpoint tablet: 768px</li>
+            <li>Breakpoint desktop: 1024px</li>
+            <li>Imágenes con max-width: 100%</li>
+            <li>Tipografía con clamp()</li>
+            <li>Menú que funcione en móvil</li>
+          </ul>
+        </div>
+        <div class="req-card">
+          <h4>Calidad</h4>
+          <ul>
+            <li>HTML semántico (nada de div para todo)</li>
+            <li>Labels en todos los inputs</li>
+            <li>Alt en todas las imágenes</li>
+            <li>Funciona con teclado (Tab/Enter)</li>
+            <li>Código limpio y ordenado</li>
+            <li>Pueden explicar cada línea</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3>Pasos para construir su landing</h3>
+      <ol class="steps">
+        <li><div><strong>Crear archivos</strong> — Una carpeta con <code>index.html</code> y <code>styles.css</code>.</div></li>
+        <li><div><strong>HTML primero</strong> — DOCTYPE, html, head, body. Dentro del body: header, main con secciones, footer. Abran en navegador sin CSS — si se lee bien, la estructura está bien.</div></li>
+        <li><div><strong>Reset + variables</strong> — En el CSS: box-sizing border-box, y todas sus variables en :root.</div></li>
+        <li><div><strong>Estilos mobile</strong> — Todo en una columna. Que se lea bien en celular.</div></li>
+        <li><div><strong>Media queries</strong> — @media (min-width: 768px) para tablet, 1024px para desktop.</div></li>
+        <li><div><strong>Hover y transiciones</strong> — Que los botones y links reaccionen al mouse.</div></li>
+        <li><div><strong>Revisar</strong> — Achiquen el navegador. Naveguen con Tab. ¿Todo funciona?</div></li>
+      </ol>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <p>Taller 2 — Construcción de interfaces web modernas</p>
+    <p>Desarrollo con IA — HTML5, CSS Moderno, Responsive, UX/UI, Accesibilidad</p>
+  </footer>
+
+</body>
+</html>
